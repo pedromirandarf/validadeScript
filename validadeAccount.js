@@ -15,11 +15,11 @@ document.addEventListener('change', async() => {
         console.log(dominioC);
     }
     if(dominioC == "gmail" || dominioC == "hotmail" || dominioC == "outlook" || dominioC == "live" || dominioC == "yahoo"){
-        //document.getElementsByName('email')[0]['value'] = "Utilize um email institucional";
+        document.getElementsByName('email')[0]['value'] = "";
         window.alert("Utilize um email institucional");
     }else{
         await axios.get(`https://compugrafapi.herokuapp.com/account/bd/?id=${dominioC}`).then(response => {
-        console.log(response.data.Data[0].Empresa);
+        //console.log(response.data.Data[0].Empresa);
         if(document.getElementsByName('customer_account').length == 0){
             document.getElementsByName('field[50]')[0]['value'] = response.data.Data[0].Empresa;
         }else{
@@ -41,3 +41,5 @@ document.addEventListener('change', async() => {
 
 
 });
+
+//https://cdn.jsdelivr.net/gh/pedromirandarf/validadeScript@master/validadeAccount.js
