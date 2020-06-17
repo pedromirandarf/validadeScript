@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <header>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </header>
+<head>
+    <title>Exemplo de requisição HTTP GET com javascript puro</title>
+</head>
+<body>
+
+    
+    <div id="resposta"></div>)
+    <script>
+    $(document).ready(function(){
+        const url= 'https://compugraf55051.api-us1.com/api/3/accounts';
+        $.ajax({
+            url: url,
+            dataType: 'json',     
+            crossDomain: true,
+            type:"GET",
+            headers:{
+                "Accept": "*/*",
+                "Api-Token":"f7d5fb74bbb6de20b9fc0910f013ed8f9b3c9c69bd5f64bfacc3f202333d63818b74ff9d"
+            },
+            success: function(result){
+                console.log(result);
+            },
+            error:function(error){
+                console.log(`Error: ${error}`);
+            }
+
+        });
+    })
+    </script>
+</body>
+</html>

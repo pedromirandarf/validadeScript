@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Ajax com PHP</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    <script src="ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            
+            type: "POST",
+            url: "https://compugraf55051.api-us1.com/api/3/accounts",
+            headers:{
+                "Api-Token": "f7d5fb74bbb6de20b9fc0910f013ed8f9b3c9c69bd5f64bfacc3f202333d63818b74ff9d"
+            }
+
+        }).done(function(resposta) {
+            console.log(resposta.json());
+
+        }).fail(function(jqXHR, textStatus ) {
+            console.log("Request failed: " + textStatus);
+
+        }).always(function() {
+            console.log("completou");
+        });
+    </script>
+    </body>
+</html>
