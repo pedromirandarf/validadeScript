@@ -1,8 +1,5 @@
 document.addEventListener('change', async() => {
     const emailHolder = await document.getElementsByName('email')[0]['value'];
-    
-    console.log(emailHolder);
-
     let dominioC = String(emailHolder);
     if(dominioC.includes("@")){
         let ar = dominioC.split("@");
@@ -17,26 +14,17 @@ document.addEventListener('change', async() => {
         window.alert("Utilize um email institucional");
     }else{
         await axios.get(`https://compugrafapi.herokuapp.com/account/bd/?id=${dominioC}`).then(response => {
-             console.log(response.data.Data[0].Empresa);
-             console.log(document.getElementsByName('customer_account').length);
-             console.log(document.getElementsByName('field[50]').length);
-             console.log(document.getElementsByName('company').length);
             if(document.getElementsByName('customer_account').length != 0){
-                console.log("customer_account");
                 document.getElementsByName('customer_account')[0]['value'] = response.data.Data[0].Empresa;;    
             }else if(document.getElementsByName('field[50]').length != 0){
-                console.log("field[50]");
                 document.getElementsByName('field[50]')[0]['value'] =response.data.Data[0].Empresa;;
 
             }else if(document.getElementsByName('company').length != 0){
-                console.log("company");
                 document.getElementsByName('company')[0]['value'] =response.data.Data[0].Empresa;;
             }
         })
         .catch(error => {
             dominioC = dominioC.substring(0,1).toUpperCase().concat(dominioC.substring(1));
-            //console.log(document.getElementsByName('customer_account').length);
-
             if(document.getElementsByName('customer_account').length !== 0){
                 document.getElementsByName('customer_account')[0]['value'] = dominioC;    
             }else if(document.getElementsByName('field[50]').length !== 0){
@@ -50,5 +38,3 @@ document.addEventListener('change', async() => {
 
 
 });
-
-//https://cdn.jsdelivr.net/gh/pedromirandarf/validadeScript@master/validadeAccount.js
