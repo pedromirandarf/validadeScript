@@ -27,7 +27,7 @@ document.addEventListener('change', async() => {
 
         }else if(document.getElementsByName('company')[0]['value'].length !== 0){
             document.getElementsByName('company')[0]['value'] =response.data.Data[0].Empresa;;
-        }
+        }va
         })
         .catch(error => {
             dominioC = dominioC.substring(0,1).toUpperCase().concat(dominioC.substring(1));
