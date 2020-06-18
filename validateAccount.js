@@ -31,7 +31,12 @@ document.addEventListener('change', async() => {
             dominioC = dominioC.substring(0,1).toUpperCase().concat(dominioC.substring(1));
             console.log(document.getElementsByName('customer_account').length);
             if(document.getElementsByName('customer_account').length == 0){
-                document.getElementsByName('field[50]')[0]['value'] =dominioC;
+                if(document.getElementsByName('field[50]').length == 0){
+                    document.getElementsByName('company')[0]['value'] =dominioC;
+                }else{
+                    document.getElementsByName('field[50]')[0]['value'] =dominioC;
+                }
+                
             }else{
                 document.getElementsByName('customer_account')[0]['value'] = dominioC;
 
