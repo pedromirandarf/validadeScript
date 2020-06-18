@@ -20,26 +20,26 @@ document.addEventListener('change', async() => {
     }else{
         await axios.get(`https://compugrafapi.herokuapp.com/account/bd/?id=${dominioC}`).then(response => {
         //console.log(response.data.Data[0].Empresa);
-        if(document.getElementsByName('customer_account').length == 0){
-            document.getElementsByName('field[50]')[0]['value'] = response.data.Data[0].Empresa;
-        }else{
-            document.getElementsByName('customer_account')[0]['value'] = response.data.Data[0].Empresa;
+        if(document.getElementsByName('customer_account').length !== 0){
+            document.getElementsByName('customer_account')[0]['value'] = response.data.Data[0].Empresa;;    
+        }else if(document.getElementsByName('field[50]').length !== 0){
+            document.getElementsByName('field[50]')[0]['value'] =response.data.Data[0].Empresa;;
+
+        }else if(document.getElementsByName('company')[0]['value'].length !== 0){
+            document.getElementsByName('company')[0]['value'] =response.data.Data[0].Empresa;;
         }
-        document.getElementsByName('customer_account')[0]['value'] = response.data.Data[0].Empresa;
         })
         .catch(error => {
             dominioC = dominioC.substring(0,1).toUpperCase().concat(dominioC.substring(1));
-            console.log(document.getElementsByName('customer_account').length);
-            if(document.getElementsByName('customer_account').length == 0){
-                if(document.getElementsByName('field[50]').length == 0){
-                    document.getElementsByName('company')[0]['value'] =dominioC;
-                }else{
-                    document.getElementsByName('field[50]')[0]['value'] =dominioC;
-                }
-                
-            }else{
-                document.getElementsByName('customer_account')[0]['value'] = dominioC;
+            //console.log(document.getElementsByName('customer_account').length);
 
+            if(document.getElementsByName('customer_account').length !== 0){
+                document.getElementsByName('customer_account')[0]['value'] = dominioC;    
+            }else if(document.getElementsByName('field[50]').length !== 0){
+                document.getElementsByName('field[50]')[0]['value'] =dominioC;
+
+            }else if(document.getElementsByName('company')[0]['value'].length !== 0){
+                document.getElementsByName('company')[0]['value'] =dominioC;
             }
         });
     }
