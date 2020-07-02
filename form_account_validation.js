@@ -5,11 +5,9 @@ document.addEventListener('change', async() => {
         let ar = dominioC.split("@");
         dominioC = (ar[0] === '@')  ? ar[1] : ar[0];
         dominioC = (ar[1] === 'com')  ? ar[0] : ar[1];
-        dominioC = (ar[1] === 'org')  ? ar[0] : ar[1];
         ar = dominioC.split(".");
         dominioC = (ar[0] === 'www')  ? ar[1] : ar[0];
-        dominioC = (ar[1] === 'com')  ? ar[0] : ar[1];
-        dominioC = (ar[1] === 'org')  ? ar[0] : ar[1];
+        dominioC = (ar[1] === 'com' ||ar[1] === 'org' )  ? ar[0] : ar[1];
     }
     if(dominioC == "gmail" || dominioC == "hotmail" || dominioC == "outlook" || dominioC == "live" || dominioC == "yahoo"){
         document.getElementsByName('email')[0]['value'] = "";
